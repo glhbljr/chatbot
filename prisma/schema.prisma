@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model WAChat {
+  id               String             @id
+  BingConversation BingConversation[]
+  jailbroken       Boolean            @default(true)
+  reminders        Reminder[]
+}
+
+model BingConversation {
+  waChatId    String @id
+  waMessageId String
+
+  id              String
+  clientId        String
+  jailbreakId     String?
+  parentMessageId String?
+  invocationId    Int
+
+  encryptedSignature String
+  expiryTime         String
+
+  waChat WAChat? @relation(fields: [waChatId], references: [id])
+}
+
+model Reminder {
+  id       Int    @id @default(autoincrement())
+  reminder String
+  message  String
+  waChatId String
+  waChat   WAChat @relation(fields: [waChatId], references: [id])
+}
+
+model cache {
+  key   String @id
+  value String
+}

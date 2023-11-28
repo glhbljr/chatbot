@@ -1,0 +1,49 @@
+{
+  "name": "whatsapp-ai-assistant",
+  "version": "2.0.0",
+  "description": "WhatsApp chatbot",
+  "module": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "dev": "nodemon src/index.ts",
+    "generate": "prisma generate",
+    "migrate": "prisma migrate reset",
+    "studio": "prisma studio",
+    "docker:build": "docker build -t sydney-whatsapp-chatbot .",
+    "docker:run": "docker run -it -d --name sydney-whatsapp-chatbot sydney-whatsapp-chatbot",
+    "docker:build:run": "pnpm docker:build && pnpm docker:run",
+    "docker:stop": "docker stop sydney-whatsapp-chatbot",
+    "build": "npm run generate && npm run migrate"
+  },
+  "repository": "https://github.com/veigamann/sydney-whatsapp-chatbot.git",
+  "author": "Matheus Veiga <veigamann@gmail.com>",
+  "devDependencies": {
+    "@types/fluent-ffmpeg": "^2.1.22",
+    "@types/node": "^20.8.0",
+    "@types/qrcode": "^1.5.2",
+    "nodemon": "^3.0.1",
+    "prisma": "^5.3.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@keyv/sqlite": "^3.6.6",
+    "@prisma/client": "5.3.1",
+    "@types/common-tags": "^1.8.2",
+    "@types/node-schedule": "^2.1.1",
+    "@waylaidwanderer/chatgpt-api": "github:Luisotee/node-chatgpt-api",
+    "common-tags": "^1.8.2",
+    "dayjs": "^1.11.10",
+    "dotenv": "^16.3.1",
+    "dotenv-expand": "^10.0.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "keyv": "^4.5.3",
+    "node-schedule": "^2.1.1",
+    "openai": "^4.11.1",
+    "qrcode": "^1.5.3",
+    "rrule": "^2.7.2",
+    "whatsapp-web.js": "1.22.2-alpha.1",
+    "zod": "^3.22.2"
+  }
+}
