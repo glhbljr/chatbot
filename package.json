@@ -9,12 +9,13 @@
     "dev": "nodemon src/index.ts",
     "generate": "prisma generate",
     "migrate": "prisma migrate reset",
+    "postinstall": "prisma generate",
     "studio": "prisma studio",
     "docker:build": "docker build -t sydney-whatsapp-chatbot .",
     "docker:run": "docker run -it -d --name sydney-whatsapp-chatbot sydney-whatsapp-chatbot",
     "docker:build:run": "pnpm docker:build && pnpm docker:run",
     "docker:stop": "docker stop sydney-whatsapp-chatbot",
-    "build": "npm run generate && npm run migrate"
+    "build": "npm run generate && npm run migrate && prisma generate"
   },
   "repository": "https://github.com/veigamann/sydney-whatsapp-chatbot.git",
   "author": "Matheus Veiga <veigamann@gmail.com>",
